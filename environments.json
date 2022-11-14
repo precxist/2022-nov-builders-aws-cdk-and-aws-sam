@@ -1,0 +1,11 @@
+{
+    "PutTranslationFunction": {
+        "TRANSLATE_BUS": "TranslateBus"
+    },
+    "SaveTranslationFunction": {
+        "TRANSLATE_TABLE": "TranslateTable"
+    },
+    "GetTranslationFunction": {
+        "TRANSLATE_TABLE": "TranslateTable"
+    }
+}
