@@ -18,6 +18,7 @@ export class Nov2022BuildersAwsCdkAndAwsSamStack extends cdk.Stack {
             partitionKey: {name: 'id', type: AttributeType.STRING},
             sortKey: {name: 'language', type: AttributeType.STRING},
             tableName: "TranslateTable",
+            removalPolicy: cdk.RemovalPolicy.DESTROY,
         });
     
         // ###################################################
