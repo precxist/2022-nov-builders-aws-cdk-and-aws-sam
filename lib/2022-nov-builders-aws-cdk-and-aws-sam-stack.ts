@@ -1,5 +1,5 @@
 import * as cdk from 'aws-cdk-lib';
-import { RestApi, LambdaIntegration } from 'aws-cdk-lib/aws-apigateway';
+import { RestApi, LambdaIntegration, EndpointType, MethodLoggingLevel } from 'aws-cdk-lib/aws-apigateway';
 import { AttributeType, Table } from 'aws-cdk-lib/aws-dynamodb';
 import { EventBus, Rule } from 'aws-cdk-lib/aws-events';
 import { LambdaFunction } from 'aws-cdk-lib/aws-events-targets';
@@ -95,7 +95,11 @@ export class Nov2022BuildersAwsCdkAndAwsSamStack extends cdk.Stack {
         // ###################################################
         // API Gateway and routes
         // ###################################################
-        const translateAPI = new RestApi(this, "TranslateAPI");
+        const translateAPI = new RestApi(this, "TranslateAPI", 
+            {
+                endpointTypes: [EndpointType.REGIONAL],
+            }
+        );
 
         const root = translateAPI.root;
         root.addMethod('POST', new LambdaIntegration(putTranslationFunction));

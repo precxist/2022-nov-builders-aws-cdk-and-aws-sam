@@ -44,7 +44,12 @@ def handler(event, context):
         
     event_bus.put_events(Entries=event_entries)
         
-    return json.dumps({
-        "id": event["requestContext"]["requestId"],
+    resp_body = json.dumps({
+        # "id": event["requestContext"]["requestId"],
         "Items": translations,
     }, ensure_ascii=False)
+        
+    return {
+        "statusCode": 200,
+        "body": resp_body
+    }   

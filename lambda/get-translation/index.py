@@ -23,11 +23,17 @@ def get_all():
         
 
 def handler(event, context):
-    if "pathParameters" in event and "id" in event["pathParameters"]:
+    if "pathParameters" in event and event["pathParameters"] and "id" in event["pathParameters"]:
         resp = get_one(event["pathParameters"]["id"])
     else:
         resp = get_all()
     
-    return json.dumps({
-        "Items": resp['Items']
-    })
+    resp_body = json.dumps({
+        "Items": resp['Items'],
+    }, ensure_ascii=False)
+        
+    return {
+        "statusCode": 200,
+        "body": resp_body
+    }   
+
