@@ -1,0 +1,8 @@
+# put translation
+curl -d '{"text":"Hi, good to see you!", "languages": ["ko", "ja"]}' -X POST https://<YOUR-API-HOST>/prod
+
+# get single translation
+curl -X GET https://<YOUR-API-HOST>/prod/{id}
+
+# get all translations
+curl -X GET https://<YOUR-API-HOST>/prod
